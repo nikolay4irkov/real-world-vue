@@ -1,11 +1,16 @@
 import Vue from "vue";
 import Vuex from "vuex";
-import EventService from "./../services/EventService";
+
+import * as user from "./modules/user.js";
+import * as event from "./modules/event";
 Vue.use(Vuex);
 
 export default new Vuex.Store({
+  modules: {
+    user,
+    event,
+  },
   state: {
-    user: { id: "abc123", name: "Adam Jahr" },
     categories: [
       "sustainability",
       "nature",
@@ -15,31 +20,5 @@ export default new Vuex.Store({
       "food",
       "community",
     ],
-    events: [],
   },
-  mutations: {
-    ADD_EVENT(state, event) {
-      state.events.push(event);
-    },
-    SET_EVENTS(state, events) {
-      state.events = events;
-    },
-  },
-  actions: {
-    createEvent({ commit }, event) {
-      return EventService.postEvent(event).then(() => {
-        commit("ADD_EVENT", event);
-      });
-    },
-    fetchEvents({ commit }) {
-      EventService.getEvents()
-        .then((response) => {
-          commit("SET_EVENTS", response.data);
-        })
-        .catch((error) => {
-          console.log("There was an error:" + error.response);
-        });
-    },
-  },
-  modules: {},
 });

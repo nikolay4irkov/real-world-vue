@@ -107,6 +107,60 @@
       "date": "2021-04-17T19:13:00.000Z",
       "time": "10:00",
       "attendees": []
+    },
+    {
+      "id": 9984383,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "housing",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Tea drinking",
+      "description": "",
+      "location": "",
+      "date": "2021-04-23T18:38:00.000Z",
+      "time": "20:00",
+      "attendees": []
+    },
+    {
+      "id": 6122421,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "housing",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Cleaning",
+      "description": "",
+      "location": "",
+      "date": "",
+      "time": "",
+      "attendees": []
+    },
+    {
+      "id": 5775323,
+      "user": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "category": "nature",
+      "organizer": {
+        "id": "abc123",
+        "name": "Adam Jahr"
+      },
+      "title": "Gardening",
+      "description": "",
+      "location": "Brest",
+      "date": "2021-04-30T10:39:00.000Z",
+      "time": "6:00",
+      "attendees": []
     }
   ]
 }
