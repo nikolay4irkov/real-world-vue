@@ -7,7 +7,11 @@
         :options="categories"
         v-model="event.category"
         class="field"
+        @blur="$v.event.category.touch()"
       />
+      <template v-if="$v.event.category.$error">
+        <p v-if="!$v.event.category.required">Please, select a category</p>
+      </template>
 
       <h3>Name & describe your event</h3>
 
@@ -51,13 +55,14 @@
         class="field"
       />
 
-      <input type="submit" class="button -fill-gradient" value="Submit" />
+      <BaseButton type="submit" buttonClass="-fill-gradient">Submit</BaseButton>
     </form>
   </div>
 </template>
 
 <script>
 import Datepicker from "vuejs-datepicker";
+import { required } from "vuelidate/lib/validators";
 
 export default {
   components: {
@@ -73,6 +78,16 @@ export default {
       categories: this.$store.state.categories,
       event: this.createFreshEventObject(),
     };
+  },
+  validations: {
+    event: {
+      category: { required },
+      title: { required },
+      description: { required },
+      location: { required },
+      date: { required },
+      time: { required },
+    },
   },
   methods: {
     createEvent() {

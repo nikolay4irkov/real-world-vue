@@ -6,22 +6,9 @@
 </template>
 
 <script>
+import { inputMixin } from "@/mixins/inputMixin.js";
 export default {
-  inheritAttrs: false,
-  props: {
-    label: {
-      type: String,
-      default: "",
-    },
-    value: {
-      type: [String, Number],
-    },
-  },
-  methods: {
-    updateValue(event) {
-      this.$emit("input", event.target.value);
-    },
-  },
+  mixins: [inputMixin],
 };
 </script>
 

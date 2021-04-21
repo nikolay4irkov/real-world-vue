@@ -16,22 +16,13 @@
 </template>
 
 <script>
+import { inputMixin } from "@/mixins/inputMixin.js";
 export default {
-  inheritAttrs: false,
+  mixins: [inputMixin],
   props: {
-    label: {
-      type: String,
-      default: "",
-    },
     options: {
       type: Array,
       required: true,
-    },
-    value: [String, Number],
-  },
-  methods: {
-    updateValue(event) {
-      this.$emit("input", event.target.value);
     },
   },
 };
