@@ -1,38 +1,60 @@
 <template>
-  <form @submit.prevent="submit" class="">
-    <input type="text" v-model="email" @blur="$v.email.$touch()" />
-    <div v-if="$v.email.$error">
-      <p v-if="!$v.email.email">Please, enter valid email</p>
-      <p v-if="!$v.email.required">Email is required</p>
+  <div class="">
+    <div class="">
+      <input type="text" v-model="contact" />
+      <button @click="addContact">Add</button>
+      <button @click="sortContacts">Sort</button>
+      <transition-group name="slide" tag="ul">
+        <p v-for="contact in contacts" :key="contact">{{ contact }}</p>
+      </transition-group>
     </div>
-
-    <button :disabled="$v.$invalid" type="submit">Submit</button>
-  </form>
+  </div>
 </template>
 
 <script>
-import { required, email } from "vuelidate/lib/validators";
 export default {
   data() {
     return {
-      email: null,
+      contact: "",
+      contacts: ["pete", "john", "ann", "zack", "bob", "xander"],
     };
   },
-  validations: {
-    email: {
-      required,
-      email,
-    },
-  },
   methods: {
-    submit() {
-      this.$v.$touch();
-      if (!this.$v.$invalid) {
-        console.log("Form submission " + this.email);
+    addContact() {
+      if (this.contact) {
+        this.contacts.push(this.contact);
+        this.contact = "";
       }
+    },
+    sortContacts() {
+      this.contacts.sort(() => Math.random() - 0.5);
     },
   },
 };
 </script>
 
-<style></style>
+<style>
+.slide-enter,
+.slide-leave-to {
+  transform: translateY(10px);
+}
+
+.slide-enter-active,
+.slide-leave-to-active {
+  transition: all 1s ease;
+}
+
+.slide-move {
+  transition: transform 2s ease;
+}
+
+ul {
+  display: flex;
+  flex-direction: column;
+}
+
+p {
+  display: inline-block;
+  /* margin: 0 10px; */
+}
+</style>
