@@ -1,7 +1,7 @@
 <template>
   <div class="">
     <div class="">
-      <input type="text" v-model="contact" />
+      <input type="text" v-model="contact" @keyup.enter="addContact" />
       <button @click="addContact">Add</button>
       <button @click="sortContacts">Sort</button>
       <transition-group name="slide" tag="ul">
